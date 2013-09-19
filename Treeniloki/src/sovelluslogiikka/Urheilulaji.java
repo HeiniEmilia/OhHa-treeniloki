@@ -1,3 +1,5 @@
+package sovelluslogiikka;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -11,6 +13,7 @@ public class Urheilulaji {
     private String nimi;
     private int tunnit;
     private int minuutit;
+    private int lajillaEriTreenimuotoja = 0;
     
     public Urheilulaji(String nimi){
         this.nimi = nimi;
@@ -36,6 +39,15 @@ public class Urheilulaji {
             this.tunnit = this.tunnit + lisaaTunnit + tuntejaMinuuteista;
             this.minuutit = this.minuutit + minuutitMinuuteista;
         }
+    }
+    
+    public void lisaaLajilleTreenimuotoja(String treenimuodonNimi){
+        LajinTreenimuoto treenimuoto = new LajinTreenimuoto(treenimuodonNimi);
+        this.lajillaEriTreenimuotoja ++;
+    }
+    
+    public int treenimuotojenMaara(){
+        return this.lajillaEriTreenimuotoja;
     }
     
     public boolean suurempiAika(Urheilulaji verrattava){

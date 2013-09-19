@@ -1,13 +1,17 @@
+package sovelluslogiikkaTest;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import sovelluslogiikka.Urheilulaji;
 import static org.junit.Assert.*;
 
 
@@ -129,5 +133,21 @@ public class UrheilulajiTest {
         boolean vastaus = laji2.samatAjat(laji1);
         
         assertEquals(false, vastaus);
+    }
+    
+    @Test
+    public void alussaEiTreenimuotoja(){
+        int vastaus = laji1.treenimuotojenMaara();
+        
+        assertEquals(0, vastaus);
+    }
+    
+    @Test
+    public void TreenimuodonLisaysLisaaNiidenMaaraa(){
+        laji1.lisaaLajilleTreenimuotoja("Kilpailu");
+        laji1.lisaaLajilleTreenimuotoja("Harjoitukset");
+        int vastaus = laji1.treenimuotojenMaara();
+        
+        assertEquals(2, vastaus);
     }
 }

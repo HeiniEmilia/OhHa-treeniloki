@@ -2,12 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package sovelluslogiikka;
 
 /**
  *
  * @author Heini
  */
-public class Treeniloki {
+public class Main {
 
     /**
      * @param args the command line arguments
