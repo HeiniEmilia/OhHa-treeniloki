@@ -4,13 +4,14 @@
  */
 package sovelluslogiikka;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Heini
  */
-public class TreeninArpoja {
+public class TreeninArpoja implements Serializable{
     private Random treeniArpa;
     private Random aikaArpa;
     private Treeniloki treeniloki;

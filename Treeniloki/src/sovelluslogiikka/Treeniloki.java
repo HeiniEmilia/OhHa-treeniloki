@@ -1,6 +1,7 @@
 package sovelluslogiikka;
 
 import java.util.ArrayList;
+import java.io.*;
 
 /*
  * To change this template, choose Tools | Templates
@@ -11,19 +12,25 @@ import java.util.ArrayList;
  *
  * @author Heini
  */
-public class Treeniloki {
+public class Treeniloki implements Serializable{
     private TreeninArpoja arpoja;
     private Kayttaja omistaja;
     private int lajienMaara = 0;
+    private String lokinNimi;
     
-    public Treeniloki(String kayttajatunnus, String salasana){
+    public Treeniloki(String nimi, String kayttajatunnus, String salasana){
+        this.lokinNimi = nimi;
         this.arpoja = new TreeninArpoja();
         this.omistaja = new Kayttaja(kayttajatunnus, salasana);
     }
     
-    public void luoUusiUrheilulaji(String nimi){
-        Urheilulaji uusiUrheilulaji = new Urheilulaji(nimi);
+    public String haeLokinNimi(){
+        return this.lokinNimi;
+    }    
+    
+    public Urheilulaji luoUusiUrheilulaji(String nimi){
         this.lajienMaara ++;
+        return new Urheilulaji(nimi);
     }
     
     public void lisaaTreeni(Urheilulaji urheiltuLaji, int tunnit, int minuutit){

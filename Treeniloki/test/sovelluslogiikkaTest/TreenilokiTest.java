@@ -32,7 +32,7 @@ public class TreenilokiTest {
     
     @Before
     public void setUp() {
-        treeniloki = new Treeniloki("kayttajatunnus", "salasana");
+        treeniloki = new Treeniloki("Nimi", "kayttajatunnus", "salasana");
     }
     
     @After

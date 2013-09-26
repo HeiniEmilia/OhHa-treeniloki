@@ -4,11 +4,13 @@
  */
 package sovelluslogiikka;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Heini
  */
-public class Kayttaja {
+public class Kayttaja implements Serializable{
     private String kayttajatunnus;
     private String salasana;
     
