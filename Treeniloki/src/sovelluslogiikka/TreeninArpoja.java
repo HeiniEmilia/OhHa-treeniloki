@@ -5,6 +5,7 @@
 package sovelluslogiikka;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -21,10 +22,10 @@ public class TreeninArpoja implements Serializable{
         this.aikaArpa = new Random();
     }
     
-    public int arvoLaji(){
+    public Urheilulaji arvoLaji(ArrayList<Urheilulaji> urheilulajit){
         int lajiaVastaavaLuku = this.treeniArpa.nextInt(treeniloki.urheilulajienMaara()-1);
-        return lajiaVastaavaLuku;
-        //ei vielä toteutettu loppuun
+        Urheilulaji arvottuLaji = urheilulajit.get(lajiaVastaavaLuku);
+        return arvottuLaji;
     }
     
     public int arvoAika(int minimiAikaTunnit,int minimiAikaMinuutit, int maksimiAikaTunnit, int maksimiAikaMinuutit){

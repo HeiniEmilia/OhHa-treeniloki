@@ -4,8 +4,6 @@
  */
 package kayttoliittyma;
 
-import java.awt.Container;
-import java.awt.GridLayout;
 import java.awt.event.*;
 import javax.swing.*;
 import sovelluslogiikka.Treeniloki;
