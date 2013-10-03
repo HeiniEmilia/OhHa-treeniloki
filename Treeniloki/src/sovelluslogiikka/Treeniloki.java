@@ -30,6 +30,13 @@ public class Treeniloki implements Serializable{
         return this.lokinNimi;
     }    
     
+    public boolean Kirjaudu(String kayttajatunnus, String salasana){
+        if (this.omistaja.tunnistautuminenOnnistui(kayttajatunnus, salasana)){
+            return true;
+        }
+        return false;
+    }
+    
     /**
      * Metodi luo uuden urheilulajin ja lisää sen urheilulajit listaan, 
      * joka sisältää kaikki treenilokin urheilulajit.
@@ -43,6 +50,15 @@ public class Treeniloki implements Serializable{
         urheilulajit.add(urheilulaji);
     }
     
+    /**
+     * Metodi lisää valitulle Urheilulajille aikaa annettujen tuntien ja minuuttien määrän verran.
+     * 
+     * @param urheiltuLaji laji, johon aikaa lisätään
+     * @param tunnit tuntien määrä joka lisätään
+     * @param minuutit minuuttien määrä joka lisätään
+     * 
+     * @see sovelluslogiikka.Urheilulaji#lisaaAika(int, int) 
+     */
     public void lisaaTreeni(Urheilulaji urheiltuLaji, int tunnit, int minuutit){
         urheiltuLaji.lisaaAika(tunnit, minuutit);
     }
@@ -56,6 +72,19 @@ public class Treeniloki implements Serializable{
         return this.lajienMaara;
     }
     
+    /**
+     * Metodi arpoo treenin keston annettujen ala-ja ylärajojen väliltä ja 
+     * urheiltavan lajin treenilokin sisältämistä urheilulajeista.
+     * 
+     * @param minTunnit treenin keston alarajan tunnit
+     * @param minMinuutit treenin keston alarajan minuutit
+     * @param maxTunnit treenin keston ylärajan tunnit
+     * @param maxMinuutit treenin keston alarajan minuutit
+     * @param urheilulajit lista treenilokin sisältämistä urheilulajeista
+     * 
+     * @see sovelluslogiikka.TreeninArpoja#arvoAika(int, int, int, int)
+     * @see sovelluslogiikka.TreeninArpoja#arvoLaji(java.util.ArrayList) 
+     */
     public void arvoTreeni(int minTunnit, int minMinuutit, int maxTunnit, int maxMinuutit, ArrayList<Urheilulaji> urheilulajit){
         arpoja.arvoAika(minTunnit, minMinuutit, maxTunnit, maxMinuutit);
         arpoja.arvoLaji(urheilulajit);

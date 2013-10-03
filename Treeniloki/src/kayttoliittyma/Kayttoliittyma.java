@@ -9,15 +9,12 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.WindowConstants;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import sovelluslogiikka.TiedostoonKirjoittaja;
 import sovelluslogiikka.TiedostostaLukija;
 import sovelluslogiikka.Treeniloki;
@@ -37,6 +34,9 @@ public class Kayttoliittyma implements Runnable{
     public Kayttoliittyma()throws Exception{
         this.tallentaja = new TiedostoonKirjoittaja();
         this.lukija = new TiedostostaLukija();
+        this.treenilokit = new TreenilokiTietokanta();
+        this.treenilokit.lisaaTreeniloki("Testeri", "Kayttis", "salasana");
+        this.tallentaja.tallennaTiedostoon(treenilokit);
         this.treenilokit = lukija.palautaTiedostosta();
     }
     
@@ -55,36 +55,30 @@ public class Kayttoliittyma implements Runnable{
     
     private void luoKomponentit(Container container){
         ArrayList<Treeniloki> kaikkiLokit = treenilokit.getTreenilokit();
-        DefaultListModel muutettavaLista = new DefaultListModel();
-        for (Treeniloki treeniloki: kaikkiLokit){
-            muutettavaLista.addElement(treeniloki);
-        }
-        JList treenilokiLista = new JList(muutettavaLista);
+        JList treenilokiLista = new JList(kaikkiLokit.toArray());
         treenilokiLista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         treenilokiLista.setLayoutOrientation(JList.VERTICAL);
         
-        JPanel vaihtoehtoPainikkeet = luoVaihtoehdot(kaikkiLokit);
-        
-        treenilokiLista.addListSelectionListener(new TreenilokiListastaKuuntelija(muutettavaLista, treenilokiLista, vaihtoehtoPainikkeet));
+        JPanel vaihtoehtoPainikkeet = luoVaihtoehdot(kaikkiLokit, treenilokiLista);
         
         container.add(treenilokiLista);
         container.add(vaihtoehtoPainikkeet, BorderLayout.SOUTH);
         
     }
     
-     private JPanel luoVaihtoehdot(ArrayList<Treeniloki> kaikkiTreenilokit){
+     private JPanel luoVaihtoehdot(ArrayList<Treeniloki> kaikkiTreenilokit, JList lista){
         JPanel valintaPaneeli = new JPanel (new GridLayout(1,3));
         
         JButton kirjauduNappi = new JButton("Kirjaudu");
         JButton tarkasteleNappi = new JButton("Tarkastele");
         JButton luoUusiNappi = new JButton("Luo Uusi");
         
-        //if (kaikkiTreenilokit.isEmpty()){
-            //kirjauduNappi.setEnabled(false);
-            //tarkasteleNappi.setEnabled(false);
-        //}
+        if (kaikkiTreenilokit.isEmpty()){
+            kirjauduNappi.setEnabled(false);
+            tarkasteleNappi.setEnabled(false);
+        }
         
-        kirjauduNappi.addActionListener(new KirjauduKuuntelija());
+        kirjauduNappi.addActionListener(new KirjauduKuuntelija(lista, treenilokit));
         valintaPaneeli.add(kirjauduNappi);
         
         tarkasteleNappi.addActionListener(new TarkasteleTreenilokiaKuuntelija());
@@ -95,30 +89,5 @@ public class Kayttoliittyma implements Runnable{
         
         return valintaPaneeli;
     }
-     
-    
-    public class TreenilokiListastaKuuntelija implements ListSelectionListener{
-        private DefaultListModel apuLista;
-        private JList lokit;
-        private JPanel painikkeet;
-    
-        public TreenilokiListastaKuuntelija(DefaultListModel muutettavaLista, JList treenilokiLista, JPanel vaihtoehdot){
-            this.apuLista = muutettavaLista;
-            this.lokit = treenilokiLista;
-            this.painikkeet = vaihtoehdot;
-        }
-    
-        @Override
-        public void valueChanged(ListSelectionEvent e) {
-            if (e.getValueIsAdjusting() == false) {
-                if (lokit.getSelectedIndex() == -1) {
-                    painikkeet.setVisible(false);
-                } else {
-                    painikkeet.setVisible(true);
-                }
-            }
-        }
-    
-    }
-    
+   
 }

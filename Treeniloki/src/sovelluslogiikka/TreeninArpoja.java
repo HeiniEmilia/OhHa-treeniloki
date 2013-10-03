@@ -22,6 +22,14 @@ public class TreeninArpoja implements Serializable{
         this.aikaArpa = new Random();
     }
     
+    /**
+     * Metodi arpoo luvun väliltä 0 ja urheilulaji-listan koon väliltä ja 
+     * hakee sen jälkeen listasta numeroa vastaavalla paikalla olevan urheilulajin.
+     * 
+     * @param urheilulajit Lista, josta Urheilulaji arvotaan
+     * 
+     * @return Urheilulaji, joka arpomalla saatiin
+     */
     public Urheilulaji arvoLaji(ArrayList<Urheilulaji> urheilulajit){
         int lajiaVastaavaLuku = this.treeniArpa.nextInt(treeniloki.urheilulajienMaara()-1);
         Urheilulaji arvottuLaji = urheilulajit.get(lajiaVastaavaLuku);

@@ -4,16 +4,17 @@
  */
 package sovelluslogiikka;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Heini
  */
-public class TreenilokiTietokanta {
+public class TreenilokiTietokanta implements Serializable{
     private ArrayList<Treeniloki> treenilokit;
     
-    public TreenilokiTietokanta()throws Exception{
+    public TreenilokiTietokanta(){
         this.treenilokit = new ArrayList<Treeniloki>();
     }
     
@@ -21,6 +22,15 @@ public class TreenilokiTietokanta {
         return this.treenilokit;
     }
     
+    /**
+     * Metodi lisää uuden Treenilokin Treenilokitietokantaan
+     * 
+     * @param nimi uuden Treenilokin nimi
+     * @param kayttajatunnus Treenilokin käyttäjän käyttäjätunnus
+     * @param salasana Treenilokin käyttäjän salasana
+     * 
+     * @see sovelluslogiikka.Treeniloki#Treeniloki(java.lang.String, java.lang.String, java.lang.String) 
+     */
     public void lisaaTreeniloki(String nimi, String kayttajatunnus, String salasana){
         Treeniloki treeniloki = new Treeniloki(nimi, kayttajatunnus, salasana);
         treenilokit.add(treeniloki);

@@ -23,9 +23,10 @@ public class Main {
         //TiedostoonKirjoittaja tiedostoon = new TiedostoonKirjoittaja();
         //TiedostostaLukija palauta = new TiedostostaLukija();
         
-        //Treeniloki treeniloki = new Treeniloki("Treenit", "Testeri", "salasana");
+        //TreenilokiTietokanta treenilokit = new TreenilokiTietokanta();
+        //treenilokit.lisaaTreeniloki("Treenit 2013", "Testeri", "salasana1");
         //Treeniloki treeniloki1 = new Treeniloki ("Juoksut", "Kayttaja", "salis");
-        //tiedostoon.tallennaTiedostoon(treeniloki);
+        //tiedostoon.tallennaTiedostoon(treenilokit);
 
         //Treeniloki treeniloki2;
         //treeniloki2 = palauta.palautaTiedostosta();

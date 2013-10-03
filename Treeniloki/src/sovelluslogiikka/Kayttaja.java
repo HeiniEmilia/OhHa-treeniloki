@@ -41,13 +41,30 @@ public class Kayttaja implements Serializable{
         }
         return false;
     }
-    
+    /**
+     * Metodi vaihtaa salasanan, jos annetut kayttajatunnus ja salasana täsmäävät käyttäjään.
+     * 
+     * @param nykyinenKayttajatunnus annettu kayttajatunnus, jota verrataan käyttäjän käyttäjätunnukseen
+     * @param nykyinenSalasana annettu salasana, jota verrataan käyttäjän salasanaan
+     * @param uusiSalasana asetetaan uusi salasana
+     * 
+     * @see sovelluslogiikka.Kayttaja#tunnistautuminenOnnistui(java.lang.String, java.lang.String) 
+     */
     public void vaihdaSalasana(String nykyinenKayttajatunnus, String nykyinenSalasana, String uusiSalasana){
         if(tunnistautuminenOnnistui(nykyinenKayttajatunnus,nykyinenSalasana)){
             this.salasana = uusiSalasana;
         }
     }
     
+    /**
+     * Metodi vaihtaa käyttäjätunnuksen, jos annetut kayttajatunnus ja salasana täsmäävät käyttäjään.
+     * 
+     * @param nykyinenKayttajatunnus annettu kayttajatunnus, jota verrataan käyttäjän käyttäjätunnukseen
+     * @param nykyinenSalasana annettu salasana, jota verrataan käyttäjän salasanaan
+     * @param uusiKayttajatunnus asetetaan uusi kayttajatunnus
+     * 
+     * @see sovelluslogiikka.Kayttaja#tunnistautuminenOnnistui(java.lang.String, java.lang.String) 
+     */
     public void vaihdaKayttajatunnus(String nykyinenKayttajatunnus, String nykyinenSalasana,String uusiKayttajatunnus){
         if(tunnistautuminenOnnistui(nykyinenKayttajatunnus,nykyinenSalasana)){
             this.kayttajatunnus = uusiKayttajatunnus;
