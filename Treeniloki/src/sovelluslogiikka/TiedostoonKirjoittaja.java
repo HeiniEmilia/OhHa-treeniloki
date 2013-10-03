@@ -5,7 +5,7 @@
 package sovelluslogiikka;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,10 +22,14 @@ public class TiedostoonKirjoittaja {
         
     }
     
-    public void tallennaTiedostoon(Treeniloki treeniloki) throws Exception{
-        ulos.writeObject(treeniloki);
-        ulos.close();
-        fileUlos.close();
+    public void tallennaTiedostoon(TreenilokiTietokanta treenilokit){
+        try{
+            ulos.writeObject(treenilokit);
+            ulos.close();
+            fileUlos.close();
+        }catch(IOException e){
+            System.out.print("Ei tallennettavia treenilokeja");
+        }
     }
     
 }

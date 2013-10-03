@@ -60,5 +60,10 @@ public class Treeniloki implements Serializable{
         arpoja.arvoAika(minTunnit, minMinuutit, maxTunnit, maxMinuutit);
         arpoja.arvoLaji(urheilulajit);
     }
+    
+    @Override
+    public String toString(){
+        return this.lokinNimi;
+    }
 
 }

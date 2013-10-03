@@ -5,6 +5,7 @@
 package sovelluslogiikka;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,8 +21,15 @@ public class TiedostostaLukija {
         this.sisaan = new ObjectInputStream(fileSisaan);
     }
     
-    public Treeniloki palautaTiedostosta()throws Exception{
-        return (Treeniloki)sisaan.readObject();
+    public TreenilokiTietokanta palautaTiedostosta() throws Exception{
+        try{
+            TreenilokiTietokanta treenilokit = (TreenilokiTietokanta)sisaan.readObject();
+            return treenilokit;
+        } catch (IOException e){
+            System.out.println("Ei vielä treenilokeja");
+        } catch (ClassNotFoundException e){
+            System.out.println("Ei löytänyt treenilokeja");
+        } return new TreenilokiTietokanta();
     }
     
 }

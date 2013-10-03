@@ -5,9 +5,11 @@
 package kayttoliittyma;
 
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.*;
 import javax.swing.*;
+import sovelluslogiikka.TreenilokiTietokanta;
 
 /**
  *
@@ -15,20 +17,23 @@ import javax.swing.*;
  */
 public class ValitseLuoUusiKuuntelija implements ActionListener{
     private JFrame frame;
+    private TreenilokiTietokanta treenilokit;
     
-    public ValitseLuoUusiKuuntelija(){
+    public ValitseLuoUusiKuuntelija(TreenilokiTietokanta treenilokit){
         this.frame = new JFrame();
+        frame.setPreferredSize(new Dimension(300, 200));
+        this.treenilokit = treenilokit;
     }
     
     @Override
     public void actionPerformed(ActionEvent ae){
-        luoLuoUusiTreenilokiKomponentit(frame.getContentPane());
+        luoUusiTreenilokiKomponentit(frame.getContentPane());
         
         frame.pack();
         frame.setVisible(true);
     }
     
-    public void luoLuoUusiTreenilokiKomponentit(Container container){
+    public void luoUusiTreenilokiKomponentit(Container container){
         GridLayout layout = new GridLayout(4,2);
         container.setLayout(layout);
         
@@ -40,7 +45,7 @@ public class ValitseLuoUusiKuuntelija implements ActionListener{
         JTextField salasanaKentta = new JTextField();
         
         JButton luoUusiNappi = new JButton("Luo uusi treeniloki");
-        luoUusiNappi.addActionListener(new LuoUusiKuuntelija(frame, nimiKentta, kayttajatunnusKentta, salasanaKentta));
+        luoUusiNappi.addActionListener(new LuoUusiKuuntelija(frame, nimiKentta, kayttajatunnusKentta, salasanaKentta, treenilokit));
         
         container.add(treenilokinNimi);
         container.add(nimiKentta);
