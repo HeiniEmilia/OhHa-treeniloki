@@ -4,7 +4,6 @@
  */
 package kayttoliittyma;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -25,6 +24,7 @@ public class ArvoTreeniKuuntelija implements ActionListener{
     private Treeniloki treeniloki;
     private JFrame frame;
     
+   
     public ArvoTreeniKuuntelija(Treeniloki treeniloki){
         this.treeniloki = treeniloki;
         
@@ -70,10 +70,12 @@ public class ArvoTreeniKuuntelija implements ActionListener{
         maksimi.add(maksimiMin);
         maksimi.add(maxMinuuttia);
         
+        JLabel arvottuTulos = new JLabel();
         
         JButton arvoNappi = new JButton("Arvo!");
+        arvoNappi.addActionListener(new SuoritaArvontaKuuntelija(minimiTunnit, minimiMin, maksimiTunnit, maksimiMin, arvottuTulos));
         
-        JLabel arvottuTulos = new JLabel();
+        
         
         container.add(minimiAika);
         container.add(minimi);
