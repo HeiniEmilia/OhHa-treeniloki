@@ -15,22 +15,25 @@ import sovelluslogiikka.TreenilokiTietokanta;
  *
  * @author Heini
  */
-public class ValitseLuoUusiKuuntelija implements ActionListener{
+public class UusiTreenilokiKuuntelija implements ActionListener{
     private JFrame frame;
+    private JFrame frameKirjaudu;
     private TreenilokiTietokanta treenilokit;
     
-    public ValitseLuoUusiKuuntelija(TreenilokiTietokanta treenilokit){
-        this.frame = new JFrame();
-        frame.setPreferredSize(new Dimension(300, 200));
+    public UusiTreenilokiKuuntelija(JFrame frame, TreenilokiTietokanta treenilokit){
+        this.frame = frame;
+        this.frameKirjaudu = new JFrame("Luo Uusi");
+        frameKirjaudu.setPreferredSize(new Dimension(300, 200));
+        frameKirjaudu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.treenilokit = treenilokit;
     }
     
     @Override
     public void actionPerformed(ActionEvent ae){
-        luoUusiTreenilokiKomponentit(frame.getContentPane());
+        luoUusiTreenilokiKomponentit(frameKirjaudu.getContentPane());
         
-        frame.pack();
-        frame.setVisible(true);
+        frameKirjaudu.pack();
+        frameKirjaudu.setVisible(true);
     }
     
     public void luoUusiTreenilokiKomponentit(Container container){
@@ -45,7 +48,7 @@ public class ValitseLuoUusiKuuntelija implements ActionListener{
         JTextField salasanaKentta = new JTextField();
         
         JButton luoUusiNappi = new JButton("Luo uusi treeniloki");
-        luoUusiNappi.addActionListener(new LuoUusiKuuntelija(frame, nimiKentta, kayttajatunnusKentta, salasanaKentta, treenilokit));
+        luoUusiNappi.addActionListener(new LuoUusiTreenilokiKuuntelija(frame, frameKirjaudu, nimiKentta, kayttajatunnusKentta, salasanaKentta, treenilokit));
         
         container.add(treenilokinNimi);
         container.add(nimiKentta);

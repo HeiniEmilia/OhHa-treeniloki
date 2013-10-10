@@ -50,6 +50,10 @@ public class Treeniloki implements Serializable{
         urheilulajit.add(urheilulaji);
     }
     
+    public ArrayList<Urheilulaji> getUrheilulajit(){
+        return this.urheilulajit;
+    }
+    
     /**
      * Metodi lisää valitulle Urheilulajille aikaa annettujen tuntien ja minuuttien määrän verran.
      * 

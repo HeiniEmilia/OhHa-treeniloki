@@ -7,51 +7,47 @@ package kayttoliittyma;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.WindowConstants;
+import java.awt.event.*;
+import javax.swing.*;
 import sovelluslogiikka.Treeniloki;
-
+import sovelluslogiikka.TreenilokiTietokanta;
 /**
  *
  * @author Heini
  */
-public class OnnistuukoKirjautuminenKuuntelija implements ActionListener{
-    private JFrame frame;
-    private Treeniloki treeniloki;
-    private JFrame frameKirjaudu;
+public class LuoUusiTreenilokiKuuntelija implements ActionListener{
+    private JTextField lokinNimi;
     private JTextField kayttajatunnus;
     private JTextField salasana;
+    private JFrame frameKirjaudu;
+    private JFrame frame;
+    private JFrame frameMuokkaa;
+    private TreenilokiTietokanta treenilokit;
+    private Treeniloki treeniloki;
     
-    public OnnistuukoKirjautuminenKuuntelija(JFrame frame, Treeniloki treeniloki, JFrame frameKirjaudu, JTextField kayttajatunnus, JTextField salasana){
+    public LuoUusiTreenilokiKuuntelija(JFrame frame, JFrame frameKirjaudu, JTextField nimi, JTextField kayttajatunnus, JTextField salasana, TreenilokiTietokanta treenilokit){
+        this.frameKirjaudu =frameKirjaudu;
         this.frame = frame;
-        this.treeniloki = treeniloki;
-        this.frameKirjaudu = frameKirjaudu;
+        this.lokinNimi = nimi;
         this.kayttajatunnus = kayttajatunnus;
         this.salasana = salasana;
+        this.treenilokit = treenilokit;
     }
-
+    
     @Override
-    public void actionPerformed(ActionEvent ae) {
-        if(treeniloki.Kirjaudu(this.kayttajatunnus.getText(), this.salasana.getText())){
-            frame.dispose();
-            frameKirjaudu.dispose();
-            
-            JFrame frameMuokkaa = new JFrame(treeniloki.toString());
-            frameMuokkaa.setPreferredSize(new Dimension(500, 400));
+    public void actionPerformed(ActionEvent ae){
+        this.treeniloki = treenilokit.lisaaTreeniloki(lokinNimi.getText(), kayttajatunnus.getText(), salasana.getText());
+        frame.dispose();
+        frameKirjaudu.dispose();
         
-            frameMuokkaa.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frameMuokkaa = new JFrame(treeniloki.toString());
+        frameMuokkaa.setPreferredSize(new Dimension(500, 400));
+        frameMuokkaa.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
-            luoKomponentit(frameMuokkaa.getContentPane());
+        luoKomponentit(frameMuokkaa.getContentPane());
         
-            frameMuokkaa.pack(); 
-            frameMuokkaa.setVisible(true);
-        } else {
-            System.out.println("Syötä uudestaan");
-        }
+        frameMuokkaa.pack(); 
+        frameMuokkaa.setVisible(true);
         
     }
     
@@ -65,17 +61,17 @@ public class OnnistuukoKirjautuminenKuuntelija implements ActionListener{
         lisaaTreeni.addActionListener(new LisaaTreeniKuuntelija(treeniloki));
         JButton arvoTreeni = new JButton("Arvo treeni");
         arvoTreeni.addActionListener(new ArvoTreeniKuuntelija(treeniloki));
+        JButton naytaLajit = new JButton("Näytä urheilulajit");
+        
         JButton naytaKooste = new JButton("Näytä kooste");
-        naytaKooste.addActionListener(new NaytaKoosteKuuntelija(treeniloki));
         JButton naytaGraafinenKooste = new JButton("Näytä kooste graafisesti");
-        JButton poistu = new JButton("Poistu");
         
         container.add(lisaaUrheilulaji);
         container.add(lisaaTreeni);
         container.add(arvoTreeni);
+        container.add(naytaLajit);
         container.add(naytaKooste);
         container.add(naytaGraafinenKooste);
-        container.add(poistu);
     }
     
 }

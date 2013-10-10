@@ -78,13 +78,13 @@ public class Kayttoliittyma implements Runnable{
             tarkasteleNappi.setEnabled(false);
         }
         
-        kirjauduNappi.addActionListener(new KirjauduKuuntelija(lista, treenilokit));
+        kirjauduNappi.addActionListener(new KirjauduKuuntelija(frame, lista, treenilokit));
         valintaPaneeli.add(kirjauduNappi);
         
-        tarkasteleNappi.addActionListener(new TarkasteleTreenilokiaKuuntelija());
+        tarkasteleNappi.addActionListener(new TarkasteleTreenilokiaKuuntelija(lista, treenilokit));
         valintaPaneeli.add(tarkasteleNappi);
         
-        luoUusiNappi.addActionListener(new ValitseLuoUusiKuuntelija(treenilokit));
+        luoUusiNappi.addActionListener(new UusiTreenilokiKuuntelija(frame, treenilokit));
         valintaPaneeli.add(luoUusiNappi);
         
         return valintaPaneeli;

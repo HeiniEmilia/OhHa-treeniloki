@@ -31,8 +31,9 @@ public class TreenilokiTietokanta implements Serializable{
      * 
      * @see sovelluslogiikka.Treeniloki#Treeniloki(java.lang.String, java.lang.String, java.lang.String) 
      */
-    public void lisaaTreeniloki(String nimi, String kayttajatunnus, String salasana){
+    public Treeniloki lisaaTreeniloki(String nimi, String kayttajatunnus, String salasana){
         Treeniloki treeniloki = new Treeniloki(nimi, kayttajatunnus, salasana);
         treenilokit.add(treeniloki);
+        return treeniloki;
     }
 }

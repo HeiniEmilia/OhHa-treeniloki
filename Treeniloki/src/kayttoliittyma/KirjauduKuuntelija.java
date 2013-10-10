@@ -21,12 +21,14 @@ import sovelluslogiikka.TreenilokiTietokanta;
  */
 public class KirjauduKuuntelija implements ActionListener{
     private JFrame frame;
+    private JFrame frameKirjaudu;
     private JList lista;
     private TreenilokiTietokanta treenilokit;
     
-    public KirjauduKuuntelija(JList lista, TreenilokiTietokanta treenilokit){
-        this.frame = new JFrame();
-        frame.setPreferredSize(new Dimension(300, 200));
+    public KirjauduKuuntelija(JFrame frame, JList lista, TreenilokiTietokanta treenilokit){
+        this.frame = frame;
+        this.frameKirjaudu = new JFrame();
+        frameKirjaudu.setPreferredSize(new Dimension(300, 200));
         this.lista = lista;
         this.treenilokit = treenilokit;
         
@@ -37,10 +39,10 @@ public class KirjauduKuuntelija implements ActionListener{
         int index = lista.getSelectedIndex();
         Treeniloki treeniloki = treenilokit.getTreenilokit().get(index);
         
-        luoKirjautuminenKomponentit(frame.getContentPane(), treeniloki);   
+        luoKirjautuminenKomponentit(frameKirjaudu.getContentPane(), treeniloki);   
         
-        frame.pack();
-        frame.setVisible(true);
+        frameKirjaudu.pack();
+        frameKirjaudu.setVisible(true);
     }
     
     public void luoKirjautuminenKomponentit(Container container, Treeniloki treeniloki){
@@ -53,7 +55,7 @@ public class KirjauduKuuntelija implements ActionListener{
         JTextField salasanaKentta = new JTextField();
         
         JButton kirjauduNappi = new JButton ("Kirjaudu!");
-        kirjauduNappi.addActionListener(new OnnistuukoKirjautuminenKuuntelija(treeniloki, frame, kayttajatunnusKentta, salasanaKentta));
+        kirjauduNappi.addActionListener(new OnnistuukoKirjautuminenKuuntelija(frame, treeniloki, frameKirjaudu, kayttajatunnusKentta, salasanaKentta));
         
         container.add(kayttajatunnus);
         container.add(kayttajatunnusKentta);
