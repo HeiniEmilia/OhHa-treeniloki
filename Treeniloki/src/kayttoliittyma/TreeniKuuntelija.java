@@ -6,9 +6,9 @@ package kayttoliittyma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JList;
-import javax.swing.JTextField;
 import sovelluslogiikka.Treeniloki;
 import sovelluslogiikka.Urheilulaji;
 
@@ -19,11 +19,11 @@ import sovelluslogiikka.Urheilulaji;
 public class TreeniKuuntelija implements ActionListener{
     private Treeniloki treeniloki;
     private JList lista;
-    private JTextField tunnit;
-    private JTextField minuutit;
+    private JFormattedTextField tunnit;
+    private JFormattedTextField minuutit;
     private JFrame frame;
     
-    public TreeniKuuntelija(JFrame frame, Treeniloki treeniloki, JList lista, JTextField tunnit, JTextField minuutit){
+    public TreeniKuuntelija(JFrame frame, Treeniloki treeniloki, JList lista, JFormattedTextField tunnit, JFormattedTextField minuutit){
         this.frame = frame;
         this.treeniloki = treeniloki;
         this.lista = lista;
@@ -35,7 +35,9 @@ public class TreeniKuuntelija implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         int index = lista.getSelectedIndex();
         Urheilulaji urheilulaji = treeniloki.getUrheilulajit().get(index);    
-        
+        int tunnitNumeroina = (Integer)tunnit.getValue();
+        int minuutitNumeroina = (Integer)minuutit.getValue();
+        urheilulaji.lisaaAika(tunnitNumeroina, minuutitNumeroina);
         
         frame.dispose();
     }

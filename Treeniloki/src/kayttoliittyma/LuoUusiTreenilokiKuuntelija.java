@@ -18,14 +18,14 @@ import sovelluslogiikka.TreenilokiTietokanta;
 public class LuoUusiTreenilokiKuuntelija implements ActionListener{
     private JTextField lokinNimi;
     private JTextField kayttajatunnus;
-    private JTextField salasana;
+    private JPasswordField salasana;
     private JFrame frameKirjaudu;
     private JFrame frame;
     private JFrame frameMuokkaa;
     private TreenilokiTietokanta treenilokit;
     private Treeniloki treeniloki;
     
-    public LuoUusiTreenilokiKuuntelija(JFrame frame, JFrame frameKirjaudu, JTextField nimi, JTextField kayttajatunnus, JTextField salasana, TreenilokiTietokanta treenilokit){
+    public LuoUusiTreenilokiKuuntelija(JFrame frame, JFrame frameKirjaudu, JTextField nimi, JTextField kayttajatunnus, JPasswordField salasana, TreenilokiTietokanta treenilokit){
         this.frameKirjaudu =frameKirjaudu;
         this.frame = frame;
         this.lokinNimi = nimi;

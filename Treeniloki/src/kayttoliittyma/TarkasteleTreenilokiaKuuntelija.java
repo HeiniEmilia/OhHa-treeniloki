@@ -20,7 +20,8 @@ import sovelluslogiikka.TreenilokiTietokanta;
  */
 public class TarkasteleTreenilokiaKuuntelija implements ActionListener{
     private JList treenilokiLista;
-    TreenilokiTietokanta treenilokit;
+    private TreenilokiTietokanta treenilokit;
+    private Treeniloki treeniloki;
     
     public TarkasteleTreenilokiaKuuntelija (JList lista, TreenilokiTietokanta treenilokit){
         this.treenilokiLista = lista;
@@ -30,7 +31,7 @@ public class TarkasteleTreenilokiaKuuntelija implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         int index = treenilokiLista.getSelectedIndex();
-        Treeniloki treeniloki = treenilokit.getTreenilokit().get(index);
+        this.treeniloki = treenilokit.getTreenilokit().get(index);
         JFrame frame = new JFrame(treeniloki.toString());
         
         luoKomponentit(frame.getContentPane());
@@ -43,12 +44,13 @@ public class TarkasteleTreenilokiaKuuntelija implements ActionListener{
         GridLayout layout = new GridLayout(3,1);
         container.setLayout(layout);
         
-        JButton naytaLajit = new JButton("Näytä urheilulajit");
         JButton naytaKooste = new JButton("Näytä kooste");
+        naytaKooste.addActionListener(new NaytaKoosteKuuntelija(treeniloki));
         JButton naytaGraafinenKooste = new JButton("Näytä kooste graafisesti");
-        
-        container.add(naytaLajit);
+        JButton poistu = new JButton ("Poistu");
+                
         container.add(naytaKooste);
         container.add(naytaGraafinenKooste);
+        container.add(poistu);
     }
 }

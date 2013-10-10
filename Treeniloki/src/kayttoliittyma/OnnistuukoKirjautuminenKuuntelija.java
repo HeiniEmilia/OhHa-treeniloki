@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import sovelluslogiikka.Treeniloki;
@@ -24,9 +25,9 @@ public class OnnistuukoKirjautuminenKuuntelija implements ActionListener{
     private Treeniloki treeniloki;
     private JFrame frameKirjaudu;
     private JTextField kayttajatunnus;
-    private JTextField salasana;
+    private JPasswordField salasana;
     
-    public OnnistuukoKirjautuminenKuuntelija(JFrame frame, Treeniloki treeniloki, JFrame frameKirjaudu, JTextField kayttajatunnus, JTextField salasana){
+    public OnnistuukoKirjautuminenKuuntelija(JFrame frame, Treeniloki treeniloki, JFrame frameKirjaudu, JTextField kayttajatunnus, JPasswordField salasana){
         this.frame = frame;
         this.treeniloki = treeniloki;
         this.frameKirjaudu = frameKirjaudu;

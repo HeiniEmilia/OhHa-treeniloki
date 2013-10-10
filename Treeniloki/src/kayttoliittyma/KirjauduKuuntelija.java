@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import sovelluslogiikka.Treeniloki;
 import sovelluslogiikka.TreenilokiTietokanta;
@@ -52,7 +53,7 @@ public class KirjauduKuuntelija implements ActionListener{
         JLabel kayttajatunnus = new JLabel("Kayttajatunnus: ");
         JTextField kayttajatunnusKentta = new JTextField();
         JLabel salasana = new JLabel("Salasana: ");
-        JTextField salasanaKentta = new JTextField();
+        JPasswordField salasanaKentta = new JPasswordField();
         
         JButton kirjauduNappi = new JButton ("Kirjaudu!");
         kirjauduNappi.addActionListener(new OnnistuukoKirjautuminenKuuntelija(frame, treeniloki, frameKirjaudu, kayttajatunnusKentta, salasanaKentta));

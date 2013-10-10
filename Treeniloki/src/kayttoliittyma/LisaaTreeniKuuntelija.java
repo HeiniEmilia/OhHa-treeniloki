@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -54,9 +55,9 @@ public class LisaaTreeniKuuntelija implements ActionListener{
         
         JPanel alapaneeli = new JPanel (new GridLayout(1,5));
         
-        JTextField tunnitKentta = new JTextField();
+        JFormattedTextField tunnitKentta = new JFormattedTextField(0);
         JLabel tunnit = new JLabel("h");
-        JTextField minuutitKentta = new JTextField();
+        JFormattedTextField minuutitKentta = new JFormattedTextField(0);
         JLabel minuutit = new JLabel ("min");
         
         JButton lisaaNappi = new JButton ("Lisää!");
