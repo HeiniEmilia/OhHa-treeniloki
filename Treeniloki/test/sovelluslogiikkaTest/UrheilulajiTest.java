@@ -11,7 +11,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import sovelluslogiikka.Urheilulaji;
+import treeniloki.sovelluslogiikka.Urheilulaji;
 import static org.junit.Assert.*;
 
 
