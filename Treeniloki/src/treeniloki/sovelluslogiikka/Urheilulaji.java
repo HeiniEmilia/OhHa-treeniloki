@@ -1,7 +1,6 @@
 package treeniloki.sovelluslogiikka;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /*
  * To change this template, choose Tools | Templates
@@ -9,6 +8,7 @@ import java.util.ArrayList;
  */
 
 /**
+ * Urheilulaji-luokka
  *
  * @author Heini
  */
@@ -16,18 +16,28 @@ public class Urheilulaji implements Serializable{
     private String nimi;
     private int tunnit;
     private int minuutit;
+    private AjanKasittelija ajankasittelija;
     
+    /**
+     * Luokan Urheilulaji konstruktori, joka asettaa Urheilulajin nimeksi annetun merkkijonon.
+     * 
+     * @param nimi merkkijono, joka asetetaan Urheilulajin nimeksi
+     */
     public Urheilulaji(String nimi){
         this.nimi = nimi;
         this.tunnit = 0;
         this.minuutit = 0;
+        this.ajankasittelija = new AjanKasittelija();
     }
     
+    /**
+     * Metodi palauttaa urheilulajin ajan merkkijonomuodossa luokan tunnit ja minuutit 
+     * parametreissa olevien arvojen perusteella
+     * 
+     * @return palauttaa merkkijonon muodossa "hh:mm"
+     */
     public String haeAika(){
-        if(this.minuutit>9){
-            return this.tunnit + ":" + this.minuutit;
-        }
-        return this.tunnit + ":0" + this.minuutit;
+        return ajankasittelija.naytaTunteinaJaMinuutteina(this.tunnit, this.minuutit);
     }
     
     public int aikaMinuuteissa(){
@@ -38,6 +48,12 @@ public class Urheilulaji implements Serializable{
         return this.nimi;
     }
     
+    /**
+     * Metodi lisaa Urheilulajin tunnit ja minuutit attribuutteihin aikaa.
+     * 
+     * @param lisaaTunnit lisättävien tuntien määrä
+     * @param lisaaMinuutit lisättävien minuuttien määrä
+     */
     public void lisaaAika(int lisaaTunnit, int lisaaMinuutit){
         int minuutitYhteensa = lisaaMinuutit + this.minuutit;
         if(minuutitYhteensa < 60){
@@ -49,20 +65,6 @@ public class Urheilulaji implements Serializable{
             this.tunnit = this.tunnit + lisaaTunnit + tuntejaMinuuteista;
             this.minuutit = this.minuutit + minuutitMinuuteista;
         }
-    }
-    
-    public boolean suurempiAika(Urheilulaji verrattava){
-        if (this.tunnit>verrattava.tunnit || (this.tunnit==verrattava.tunnit && this.minuutit>verrattava.minuutit)){
-            return true;
-        }
-        return false;
-    }
-    
-    public boolean samatAjat(Urheilulaji verrattava){
-        if(this.tunnit==verrattava.tunnit && this.minuutit==verrattava.minuutit){
-            return true;
-        }
-        return false;
     }
     
     @Override

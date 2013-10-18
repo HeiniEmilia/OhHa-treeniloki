@@ -8,12 +8,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- *
+ *TreenilokiTietokanta Luokka, joka sisältää kaikki Treenilokit.
+ * 
  * @author Heini
  */
 public class TreenilokiTietokanta implements Serializable{
     private ArrayList<Treeniloki> treenilokit;
     
+    /**
+     * Luokan TreenilokiTietokanta konstruktori, joka luo uuden TreenilokiTietokanta-olion.
+     * TreenilokiTietokanta-olio sisältää ArrayList:ssä kaikki luodut Treenilokit.
+     * 
+     */
     public TreenilokiTietokanta(){
         this.treenilokit = new ArrayList<Treeniloki>();
     }

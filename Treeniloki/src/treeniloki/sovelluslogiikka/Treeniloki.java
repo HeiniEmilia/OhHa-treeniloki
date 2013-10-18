@@ -9,7 +9,8 @@ import java.util.*;
  */
 
 /**
- *
+ * Treeniloki-luokka, joka sisältää kaikki siihen kuuluvat Urheilulajit.
+ * 
  * @author Heini
  */
 public class Treeniloki implements Serializable{
@@ -20,6 +21,17 @@ public class Treeniloki implements Serializable{
     private ArrayList<Urheilulaji> urheilulajit;
     private AjanKasittelija ajankasittelija;
     
+    /**
+     * Luokan Treeniloki konstruktori, joka luo uuden Treeniloki olion. Treenilokille
+     * asetetaan nimi, sekä luodaan TreeninArpoja ja Kayttaja.
+     * 
+     * @param nimi nimi, joka asetetaan Treenilokin nimeksi
+     * @param kayttajatunnus asetetaan Treenilokin Kayttajan käyttäjätunnukseksi
+     * @param salasana asetetaan Treenilokin Kayttajan salasanaksi
+     * 
+     * @see sovelluslogiikka.TreeninArpoja#TreeninArpoja()
+     * @see sovelluslogiikka.Kayttaja#Kayttaja(String, String)
+     */
     public Treeniloki(String nimi, String kayttajatunnus, String salasana){
         this.lokinNimi = nimi;
         this.arpoja = new TreeninArpoja();
@@ -32,6 +44,17 @@ public class Treeniloki implements Serializable{
         return this.omistaja;
     }
     
+    /**
+     * Metodi tarkistaa onnistuuko kirjautuminen annetuilla kayttajatunnuksella ja salasanalla.
+     * 
+     * @param kayttajatunnus kayttajatunnus, jota verrataan Kayttajan käyttäjätunnukseen
+     * @param salasana salasana, jota verrataan Kayttajan salasanaan
+     * 
+     * @return palauttaa true, jos annettu kayttajatunnus ja salasana vastaavat Kayttajan 
+     * kayttajatunnusta ja salasanaa. Muuten palauttaa false
+     * 
+     * @see sovelluslogiikka.Kayttaja#tunnistautuminenOnnistui(String, String)
+     */
     public boolean Kirjaudu(String kayttajatunnus, String salasana){
         if (this.omistaja.tunnistautuminenOnnistui(kayttajatunnus, salasana)){
             return true;

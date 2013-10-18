@@ -15,6 +15,13 @@ public class AjanKasittelija implements Serializable{
     public AjanKasittelija(){
         
     }
+    
+    public String naytaTunteinaJaMinuutteina(int tunnit, int minuutit){
+        if(minuutit>9){
+            return tunnit + ":" + minuutit;
+        }
+        return tunnit + ":0" + minuutit;
+    }
 
     public String naytaTunteinaJaMinuutteina(int minuutit){
         if (minuutit<10){

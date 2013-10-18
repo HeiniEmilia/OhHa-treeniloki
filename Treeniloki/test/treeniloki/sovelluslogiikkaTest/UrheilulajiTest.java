@@ -1,4 +1,4 @@
-package sovelluslogiikkaTest;
+package treeniloki.sovelluslogiikkaTest;
 
 /*
  * To change this template, choose Tools | Templates

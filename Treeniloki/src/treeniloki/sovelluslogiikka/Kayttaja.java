@@ -7,7 +7,8 @@ package treeniloki.sovelluslogiikka;
 import java.io.Serializable;
 
 /**
- *
+ *Kayttaja-luokka.
+ * 
  * @author Heini
  */
 public class Kayttaja implements Serializable{
@@ -42,26 +43,18 @@ public class Kayttaja implements Serializable{
         return false;
     }
     /**
-     * Metodi vaihtaa salasanan, jos annetut kayttajatunnus ja salasana täsmäävät käyttäjään.
+     * Metodi vaihtaa salasanan uuteen salasanaan.
      * 
-     * @param nykyinenKayttajatunnus annettu kayttajatunnus, jota verrataan käyttäjän käyttäjätunnukseen
-     * @param nykyinenSalasana annettu salasana, jota verrataan käyttäjän salasanaan
-     * @param uusiSalasana asetetaan uusi salasana
-     * 
-     * @see sovelluslogiikka.Kayttaja#tunnistautuminenOnnistui(java.lang.String, java.lang.String) 
+     * @param uusiSalasana annetaan uusi salasana
      */
     public void vaihdaSalasana(String uusiSalasana){
             this.salasana = uusiSalasana;
     }
     
     /**
-     * Metodi vaihtaa käyttäjätunnuksen, jos annetut kayttajatunnus ja salasana täsmäävät käyttäjään.
+     * Metodi vaihtaa käyttäjätunnuksen uuteen käyttäjätunnukseen
      * 
-     * @param nykyinenKayttajatunnus annettu kayttajatunnus, jota verrataan käyttäjän käyttäjätunnukseen
-     * @param nykyinenSalasana annettu salasana, jota verrataan käyttäjän salasanaan
-     * @param uusiKayttajatunnus asetetaan uusi kayttajatunnus
-     * 
-     * @see sovelluslogiikka.Kayttaja#tunnistautuminenOnnistui(java.lang.String, java.lang.String) 
+     * @param uusiKayttajatunnus annetaan uusi kayttajatunnus
      */
     public void vaihdaKayttajatunnus(String uusiKayttajatunnus){
             this.kayttajatunnus = uusiKayttajatunnus;
