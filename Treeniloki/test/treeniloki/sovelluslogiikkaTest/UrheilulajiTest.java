@@ -90,64 +90,6 @@ public class UrheilulajiTest {
         assertEquals("hiihto 1:35", vastaus);
     }
     
-    @Test
-    public void suurempiAikaPalauttaaTrue(){
-        laji1.lisaaAika(0,50);
-        laji2.lisaaAika(0,45);
-        boolean vastaus = laji1.suurempiAika(laji2);
-        
-        assertEquals(true, vastaus);
-    }
-        
-    @Test
-    public void pienempiAikaPalauttaaFalse(){
-        laji1.lisaaAika(0,50);
-        laji2.lisaaAika(0,45);
-        boolean vastaus = laji2.suurempiAika(laji1);
-        
-        assertEquals(false, vastaus);
-    }
     
-    @Test
-    public void samatAjatPalauttaaFalse(){
-        laji1.lisaaAika(0,50);
-        laji2.lisaaAika(0,50);
-        boolean vastaus = laji2.suurempiAika(laji1);
-        
-        assertEquals(false, vastaus);
-    }
-    
-    @Test
-    public void tunnistaaSamatAjat(){
-        laji1.lisaaAika(0,50);
-        laji2.lisaaAika(0,50);
-        boolean vastaus = laji2.samatAjat(laji1);
-        
-        assertEquals(true, vastaus);
-    }
-    
-    @Test
-    public void tunnistaaEriAjat(){
-        laji1.lisaaAika(0,40);
-        laji2.lisaaAika(0,50);
-        boolean vastaus = laji2.samatAjat(laji1);
-        
-        assertEquals(false, vastaus);
-    }
-    
-    @Test
-    public void alussaEiTreenimuotoja(){
-        int vastaus = laji1.treenimuotojenMaara();
-        
-        assertEquals(0, vastaus);
-    }
-    
-    @Test
-    public void TreenimuodonLisaysLisaaNiidenMaaraa(){
-        laji1.lisaaLajilleTreenimuotoja("Kilpailu");
-        laji1.lisaaLajilleTreenimuotoja("Harjoitukset");
-        int vastaus = laji1.treenimuotojenMaara();
-        
-        assertEquals(2, vastaus);
-    }
+
 }

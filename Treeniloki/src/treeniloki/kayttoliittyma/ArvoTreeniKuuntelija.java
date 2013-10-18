@@ -70,7 +70,7 @@ public class ArvoTreeniKuuntelija implements ActionListener{
         maksimi.add(maksimiMin);
         maksimi.add(maxMinuuttia);
         
-        JLabel arvottuTulos = new JLabel();
+        JLabel arvottuTulos = new JLabel("", JLabel.CENTER);
         
         JButton arvoNappi = new JButton("Arvo!");
         arvoNappi.addActionListener(new SuoritaArvontaKuuntelija(treeniloki, minimiTunnit, minimiMin, maksimiTunnit, maksimiMin, arvottuTulos));

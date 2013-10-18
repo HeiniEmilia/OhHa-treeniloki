@@ -48,7 +48,7 @@ public class UusiTreenilokiKuuntelija implements ActionListener{
         JPasswordField salasanaKentta = new JPasswordField();
         JLabel salasana2 = new JLabel("Anna salasana uudestaan: ");
         JPasswordField salasanaKentta2 = new JPasswordField();
-        JLabel teksti = new JLabel("");
+        JLabel teksti = new JLabel("", JLabel.CENTER);
         
         JButton luoUusiNappi = new JButton("Luo uusi treeniloki");
         luoUusiNappi.addActionListener(new LuoUusiTreenilokiKuuntelija(frame, frameKirjaudu, nimiKentta, kayttajatunnusKentta, salasanaKentta, salasanaKentta2, teksti, treenilokit));

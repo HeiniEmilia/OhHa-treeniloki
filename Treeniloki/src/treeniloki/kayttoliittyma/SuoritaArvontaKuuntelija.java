@@ -4,6 +4,7 @@
  */
 package treeniloki.kayttoliittyma;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFormattedTextField;
@@ -35,11 +36,18 @@ public class SuoritaArvontaKuuntelija implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         int minTunnit = (Integer)minH.getValue();
         int minMinuutit = (Integer)minM.getValue();
+        int minMinuuteissa = minTunnit*60+minMinuutit;
         int maxTunnit = (Integer)maxH.getValue();
         int maxMinuutit = (Integer)maxM.getValue();
+        int maxMinuuteissa = maxTunnit*60+maxMinuutit;
         
+        if(maxMinuuteissa<minMinuuteissa){
+            arvottu.setForeground(Color.red);
+            arvottu.setText("Anna ylärajaksi suurempi aika");
+        }
         String arvottuTeksti = treeniloki.arvoTreeni(minTunnit, minMinuutit, maxTunnit, maxMinuutit, treeniloki.getUrheilulajit());
         
+        arvottu.setForeground(Color.blue);
         arvottu.setText(arvottuTeksti);
         
     }

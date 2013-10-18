@@ -42,6 +42,10 @@ public class LuoUusiTreenilokiKuuntelija implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae){
+        if(salasana.getText().isEmpty()||kayttajatunnus.getText().isEmpty()){
+            teksti.setForeground(Color.red);
+            teksti.setText("Anna käyttäjätunnus ja/tai salasana");
+        }
         if(salasana.getText().equals(salasana2.getText())){
             this.treeniloki = treenilokit.lisaaTreeniloki(lokinNimi.getText(), kayttajatunnus.getText(), salasana.getText());
             frame.dispose();

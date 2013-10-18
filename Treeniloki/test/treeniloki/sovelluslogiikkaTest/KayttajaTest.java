@@ -67,27 +67,19 @@ public class KayttajaTest {
     }
     
     @Test
-    public void vaihtaaKayttajatunnuksenJosKayttajatunnusJaSalasanaOikein(){
-        kayttaja.vaihdaKayttajatunnus("testikayttaja", "testisalasana", "uusikayttaja");
-        String vastaus = kayttaja.getKayttajatunnus();
+    public void vaihtaaSalasananUuteen(){
+        kayttaja.vaihdaSalasana("uusi");
+        String salasana = kayttaja.getSalasana();
         
-        assertEquals("uusikayttaja", vastaus);
+        assertEquals("uusi", salasana);
     }
     
     @Test
-    public void eiVaihdaKayttajatunnustaJosSalasanaVaarin(){
-        kayttaja.vaihdaKayttajatunnus("testikayttaja", "salasana", "uusikayttaja");
-        String vastaus = kayttaja.getKayttajatunnus();
+    public void vaihtaaKayttajatunnuksenUuteen(){
+        kayttaja.vaihdaKayttajatunnus("Käyttäjä");
+        String kayttis = kayttaja.getKayttajatunnus();
         
-        assertEquals("testikayttaja", vastaus);
+        assertEquals("Käyttäjä", kayttis);
     }
-    
-    @Test
-    public void eiVaihdaKayttajatunnustaJosKayttajatunnusVaarin(){
-        kayttaja.vaihdaKayttajatunnus("kayttaja", "testisalasana", "uusikayttaja");
-        String vastaus = kayttaja.getKayttajatunnus();
-        
-        assertEquals("testikayttaja", vastaus);
-    }
-    
+
 }
